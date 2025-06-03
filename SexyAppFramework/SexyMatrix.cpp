@@ -200,6 +200,11 @@ void Transform::Translate(float tx, float ty)
 ///////////////////////////////////////////////////////////////////////////////
 void Transform::RotateRad(float rot)
 {
+	// lua needs this
+	mRot += rot;
+	mHaveRot = true;
+	mNeedCalcMatrix = true;
+
 	if (!mComplex)
 	{
 		if (mHaveScale)
@@ -207,15 +212,11 @@ void Transform::RotateRad(float rot)
 			MakeComplex();
 			mMatrix.RotateRad(rot);
 		}
-		else 
-		{
-			mNeedCalcMatrix = true;
-			mHaveRot = true;
-			mRot += rot;
-		}
 	}
 	else
+	{
 		mMatrix.RotateRad(rot);
+	}
 }
 
 ///////////////////////////////////////////////////////////////////////////////

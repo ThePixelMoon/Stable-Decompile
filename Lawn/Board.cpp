@@ -649,19 +649,6 @@ void Board::PickZombieWaves()
 			mNumWaves = 40;
 	}
 
-	//if (mApp->mBoardL)
-	{
-		lua_getglobal(mApp->mBoardL, "GetNumWaves");
-		lua_pushinteger(mApp->mBoardL, mApp->mGameMode);
-		lua_pushinteger(mApp->mBoardL, mLevel);
-		lua_pushinteger(mApp->mBoardL, mNumWaves);
-		lua_pushinteger(mApp->mBoardL, mChallenge->mSurvivalStage);
-		lua_pcall(mApp->mBoardL, 4, 1, 0);
-		int gNumWaves = lua_tointeger(mApp->mBoardL, -1);
-		if (gNumWaves > -1) mNumWaves = gNumWaves;
-		lua_pop(mApp->mBoardL, 1);
-	}
-
 	// ====================================================================================================
 	// ▲ 一些准备工作
 	// ====================================================================================================
@@ -753,20 +740,6 @@ void Board::PickZombieWaves()
 		{
 			aZombiePoints *= 2;
 		}
-
-		//if (mApp->mBoardL)
-		{
-			lua_getglobal(mApp->mBoardL, "GetZombiePoints");
-			lua_pushinteger(mApp->mBoardL, mApp->mGameMode);
-			lua_pushinteger(mApp->mBoardL, mLevel);
-			lua_pushinteger(mApp->mBoardL, aWave);
-			lua_pushinteger(mApp->mBoardL, aZombiePoints);
-			lua_pushinteger(mApp->mBoardL, mChallenge->mSurvivalStage);
-			lua_pcall(mApp->mBoardL, 5, 1, 0);
-			int gZombiePoints = lua_tointeger(mApp->mBoardL, -1);
-			if (gZombiePoints > -1) aZombiePoints = gZombiePoints;
-			lua_pop(mApp->mBoardL, 1);
-		}
 		
 		// ------------------------------------------------------------------------------------------------
 		// △ 向出怪列表中加入固定刷出的僵尸
@@ -798,22 +771,6 @@ void Board::PickZombieWaves()
 			{
 				PutZombieInWave(aIntroZombieType, aWave, &aZombiePicker);
 			}
-		}
-
-		//if (mApp->mBoardL)
-		{
-			lua_getglobal(mApp->mBoardL, "PickZombieWaves");
-			lua_pushinteger(mApp->mBoardL, mApp->mGameMode);
-			lua_pushinteger(mApp->mBoardL, mLevel);
-			lua_pushinteger(mApp->mBoardL, aWave);
-			lua_pushinteger(mApp->mBoardL, aZombiePoints);
-			lua_pushinteger(mApp->mBoardL, mChallenge->mSurvivalStage);
-			lua_pushboolean(mApp->mBoardL, aIsFlagWave);
-			lua_pushboolean(mApp->mBoardL, aIsFinalWave);
-			lua_pushlightuserdata(mApp->mBoardL, this);
-			lua_pushlightuserdata(mApp->mBoardL, &aZombiePicker);
-			lua_pcall(mApp->mBoardL, 9, 0, 0);
-			lua_pop(mApp->mBoardL, 0);
 		}
 
 		// 5-10 关卡的最后一波加入一只伽刚特尔
@@ -1124,15 +1081,6 @@ void Board::PickBackground()
 		TOD_ASSERT();
 		break;
 	}
-
-	lua_getglobal(mApp->mBoardL, "GetBackground");
-	lua_pushinteger(mApp->mBoardL, mApp->mGameMode);
-	lua_pushinteger(mApp->mBoardL, mLevel);
-	lua_pushinteger(mApp->mBoardL, mBackground);
-	lua_pcall(mApp->mBoardL, 3, 1, 0);
-	int gBackground = luaL_checkinteger(mApp->mBoardL, 1);
-	if (gBackground > -1)	mBackground = (BackgroundType)gBackground;
-	lua_pop(mApp->mBoardL, 1);
 
 	LoadBackgroundImages();
 
@@ -6218,15 +6166,6 @@ void Board::UpdateGame()
 	}
 
 	UpdateProgressMeter();
-
-	lua_getglobal(mApp->mBoardL, "UpdateGame");
-	lua_pushlightuserdata(mApp->mBoardL, this);
-	lua_pushinteger(mApp->mBoardL, mApp->mGameMode);
-	lua_pushinteger(mApp->mBoardL, mLevel);
-	lua_pushinteger(mApp->mBoardL, mCurrentWave);
-	lua_pushinteger(mApp->mBoardL, mChallenge->mSurvivalStage);
-	lua_pcall(mApp->mBoardL, 5, 0, 0);
-	lua_pop(mApp->mBoardL, 0);
 }
 
 //0x415D40
@@ -7337,15 +7276,6 @@ void Board::DrawLevel(Graphics* g)
 		}
 	}
 
-	lua_getglobal(mApp->mBoardL, "GetLevelName");
-	lua_pushinteger(mApp->mBoardL, mApp->mGameMode);
-	lua_pushinteger(mApp->mBoardL, mLevel);
-	lua_pushstring(mApp->mBoardL, SexyStringToString(aLevelStr).c_str());
-	lua_pcall(mApp->mBoardL, 3, 1, 0);
-	const char* gName = lua_tostring(mApp->mBoardL, -1);
-	if (gName)	aLevelStr = StringToSexyString(gName);
-	lua_pop(mApp->mBoardL, 1);
-	
 	// ====================================================================================================
 	// ▲ 正式开始绘制关卡名称字符串
 	// ====================================================================================================
@@ -8711,6 +8641,8 @@ void Board::SetSukhbirMode(bool theEnableSukhbir)
 //0x41B1D0
 void Board::DoTypingCheck(KeyCode theKey)
 {
+	Hook::Call("Board::DoTypingCheck", this, theKey);
+
 	if (mApp->mKonamiCheck->Check(theKey))
 	{
 		mApp->PlayFoley(FoleyType::FOLEY_DROP);
@@ -8792,6 +8724,8 @@ void Board::DoTypingCheck(KeyCode theKey)
 //0x41B820
 void Board::KeyDown(KeyCode theKey)
 {
+	Hook::Call("Board::KeyDown", this, theKey);
+
 	DoTypingCheck(theKey);
 
 	if (mApp->mGameScene == GameScenes::SCENE_LEVEL_INTRO && 
@@ -8840,6 +8774,8 @@ void Board::KeyChar(SexyChar theChar)
 	if (theChar == KeyCode::KEYCODE_TAB) {
 		mApp->mShowHealthBar = !mApp->mShowHealthBar;
 	}
+
+	Hook::Call("Board::KeyChar", this, theChar);
 
 #ifdef _DEBUG 
 	if(!mApp->mDebugKeysEnabled)

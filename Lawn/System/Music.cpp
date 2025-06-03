@@ -800,13 +800,6 @@ void Music::StartGameMusic()
 		mTune = MusicTune::MUSIC_TUNE_ROOF_GRAZETHEROOF;
 	}
 
-	lua_getglobal(mApp->mMusicL, "GetGameMusic");
-	lua_pushinteger(mApp->mMusicL, mApp->mGameMode);
-	lua_pushinteger(mApp->mMusicL, mApp->mPlayerInfo->GetLevel());
-	lua_pcall(mApp->mMusicL, 2, 1, 0);
-	int gMusic = luaL_checkinteger(mApp->mMusicL, 1);
-	if (gMusic > -1) mTune = (MusicTune)gMusic;
-	lua_pop(mApp->mMusicL, 1);
 	MakeSureMusicIsPlaying(mTune);
 }
 

@@ -6,9 +6,9 @@
 #include "PlayerController.h"
 
 #include "portaudio.h"
-#include <lua.hpp>
 
 #include "SexyAppFramework/Common.h"
+#include "Lawn/Lua/LuaManager.h"
 
 #define SAMPLE_RATE  44100
 #define FRAMES_PER_BUFFER 256
@@ -141,9 +141,8 @@ public:
 	Sexy::MemoryImage*				mDarknessEffect;
 	PaStream*						mPortAudioStream;
 	float							mVoiceVolume;
-	lua_State*						mBoardL;
-	lua_State*						mMusicL;
-	lua_State*						mChallengeL;
+
+	LuaManager*						mLuaManager;
 
 public:
 	LawnApp();
@@ -342,11 +341,6 @@ public:
 	static bool						ChallengeHasScores(GameMode theGameMode);
 
 	static int						AudioCallback(const void* inputBuffer, void* outputBuffer, unsigned long framesPerBuffer, const PaStreamCallbackTimeInfo* timeInfo, PaStreamCallbackFlags statusFlags, void* userData);
-	
-	static int						PutZombieInWaveL(lua_State* L);
-	static int						TodStringTranslateL(lua_State* L);
-	static int						ChangeBackgroundL(lua_State* L);
-	static int						ChangeMusicL(lua_State* L);
 };
 
 SexyString							LawnGetCurrentLevelName();

@@ -61,15 +61,6 @@
     <Filter Include="TodLib\Common\TodCommon Source">
       <UniqueIdentifier>{d8181234-f06c-4e47-a424-2e5f375960f7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="TodLib\Effect">
-      <UniqueIdentifier>{6ad63317-2ea1-4d7d-8e41-9f0cd7a159a5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="TodLib\Effect\Effect Include">
-      <UniqueIdentifier>{defbf1f6-ac5a-4455-b0eb-8864b5547bdf}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="TodLib\Effect\Effect Source">
-      <UniqueIdentifier>{ee86bddb-409f-43a5-9994-5952fc41bc68}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Sexy">
       <UniqueIdentifier>{3dd9010e-26e5-4da8-a249-c3684d7e4d32}</UniqueIdentifier>
     </Filter>
@@ -123,6 +114,18 @@
     </Filter>
     <Filter Include="Lawn\Board\Board Source">
       <UniqueIdentifier>{f3e853ae-1d79-4c3e-bdeb-63ea2671fc57}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lawn\Lua">
+      <UniqueIdentifier>{2e3665f4-14fe-4147-ae93-30647afaab95}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TodLib\Common\TodCommon Source\Effect">
+      <UniqueIdentifier>{6ad63317-2ea1-4d7d-8e41-9f0cd7a159a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TodLib\Common\TodCommon Source\Effect\Effect Include">
+      <UniqueIdentifier>{defbf1f6-ac5a-4455-b0eb-8864b5547bdf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TodLib\Common\TodCommon Source\Effect\Effect Source">
+      <UniqueIdentifier>{ee86bddb-409f-43a5-9994-5952fc41bc68}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -800,16 +803,16 @@
       <Filter>TodLib\Common\TodCommon Source</Filter>
     </ClCompile>
     <ClCompile Include="..\Sexy.TodLib\TodParticle.cpp">
-      <Filter>TodLib\Effect\Effect Source</Filter>
+      <Filter>TodLib\Common\TodCommon Source\Effect\Effect Source</Filter>
     </ClCompile>
     <ClCompile Include="..\Sexy.TodLib\EffectSystem.cpp">
-      <Filter>TodLib\Effect\Effect Source</Filter>
+      <Filter>TodLib\Common\TodCommon Source\Effect\Effect Source</Filter>
     </ClCompile>
     <ClCompile Include="..\Sexy.TodLib\Reanimator.cpp">
-      <Filter>TodLib\Effect\Effect Source</Filter>
+      <Filter>TodLib\Common\TodCommon Source\Effect\Effect Source</Filter>
     </ClCompile>
     <ClCompile Include="..\Sexy.TodLib\ReanimAtlas.cpp">
-      <Filter>TodLib\Effect\Effect Source</Filter>
+      <Filter>TodLib\Common\TodCommon Source\Effect\Effect Source</Filter>
     </ClCompile>
     <ClCompile Include="..\Lawn\System\Music.cpp">
       <Filter>Lawn\System\System Source</Filter>
@@ -831,13 +834,13 @@
     </ClCompile>
     <ClCompile Include="..\LawnApp.cpp" />
     <ClCompile Include="..\Sexy.TodLib\FilterEffect.cpp">
-      <Filter>TodLib\Effect\Effect Source</Filter>
+      <Filter>TodLib\Common\TodCommon Source\Effect\Effect Source</Filter>
     </ClCompile>
     <ClCompile Include="..\Sexy.TodLib\TodDebug.cpp">
       <Filter>TodLib\Common\TodCommon Source</Filter>
     </ClCompile>
     <ClCompile Include="..\Sexy.TodLib\Trail.cpp">
-      <Filter>TodLib\Effect\Effect Source</Filter>
+      <Filter>TodLib\Common\TodCommon Source\Effect\Effect Source</Filter>
     </ClCompile>
     <ClCompile Include="..\Lawn\Widget\GameButton.cpp">
       <Filter>Lawn\Widget\Widget Source</Filter>
@@ -873,7 +876,7 @@
       <Filter>Lawn\System\System Source</Filter>
     </ClCompile>
     <ClCompile Include="..\Sexy.TodLib\Attachment.cpp">
-      <Filter>TodLib\Effect\Effect Source</Filter>
+      <Filter>TodLib\Common\TodCommon Source\Effect\Effect Source</Filter>
     </ClCompile>
     <ClCompile Include="..\Lawn\CursorObject.cpp">
       <Filter>Lawn\Board\Board Source</Filter>
@@ -923,6 +926,42 @@
     </ClCompile>
     <ClCompile Include="..\Lawn\Widget\LanguageScreen.cpp">
       <Filter>Lawn\Widget\Widget Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Lawn\Lua\LuaManager.cpp">
+      <Filter>Lawn\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Lawn\Lua\LLawnLib.cpp">
+      <Filter>Lawn\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Lawn\Lua\LTodCommon.cpp">
+      <Filter>Lawn\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Lawn\Lua\LTodDebug.cpp">
+      <Filter>Lawn\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Lawn\Lua\LRect.cpp">
+      <Filter>Lawn\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Lawn\Lua\LPoint.cpp">
+      <Filter>Lawn\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Lawn\Lua\LPakInterface.cpp">
+      <Filter>Lawn\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Lawn\Lua\LColor.cpp">
+      <Filter>Lawn\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Lawn\Lua\LMatrix.cpp">
+      <Filter>Lawn\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Lawn\Lua\LBASSMusic.cpp">
+      <Filter>Lawn\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Lawn\Lua\LTypingCheck.cpp">
+      <Filter>Lawn\Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Lawn\Lua\LKeyCodes.cpp">
+      <Filter>Lawn\Lua</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1278,7 +1317,7 @@
       <Filter>PakLib</Filter>
     </ClInclude>
     <ClInclude Include="..\Sexy.TodLib\Attachment.h">
-      <Filter>TodLib\Effect\Effect Include</Filter>
+      <Filter>TodLib\Common\TodCommon Source\Effect\Effect Include</Filter>
     </ClInclude>
     <ClInclude Include="..\Lawn\Board.h">
       <Filter>Lawn\Board\Board Include</Filter>
@@ -1299,7 +1338,7 @@
       <Filter>TodLib\Common\TodCommon Include</Filter>
     </ClInclude>
     <ClInclude Include="..\Sexy.TodLib\EffectSystem.h">
-      <Filter>TodLib\Effect\Effect Include</Filter>
+      <Filter>TodLib\Common\TodCommon Source\Effect\Effect Include</Filter>
     </ClInclude>
     <ClInclude Include="..\Lawn\GameObject.h">
       <Filter>Lawn\Board\Board Include</Filter>
@@ -1395,16 +1434,16 @@
       <Filter>TodLib\Common\TodCommon Include</Filter>
     </ClInclude>
     <ClInclude Include="..\Sexy.TodLib\TodParticle.h">
-      <Filter>TodLib\Effect\Effect Include</Filter>
+      <Filter>TodLib\Common\TodCommon Source\Effect\Effect Include</Filter>
     </ClInclude>
     <ClInclude Include="..\Sexy.TodLib\Reanimator.h">
-      <Filter>TodLib\Effect\Effect Include</Filter>
+      <Filter>TodLib\Common\TodCommon Source\Effect\Effect Include</Filter>
     </ClInclude>
     <ClInclude Include="..\Sexy.TodLib\ReanimAtlas.h">
-      <Filter>TodLib\Effect\Effect Include</Filter>
+      <Filter>TodLib\Common\TodCommon Source\Effect\Effect Include</Filter>
     </ClInclude>
     <ClInclude Include="..\Sexy.TodLib\FilterEffect.h">
-      <Filter>TodLib\Effect\Effect Include</Filter>
+      <Filter>TodLib\Common\TodCommon Source\Effect\Effect Include</Filter>
     </ClInclude>
     <ClInclude Include="..\Lawn\System\TypingCheck.h">
       <Filter>Lawn\System\System Include</Filter>
@@ -1423,7 +1462,7 @@
       <Filter>TodLib\Common\TodCommon Include</Filter>
     </ClInclude>
     <ClInclude Include="..\Sexy.TodLib\Trail.h">
-      <Filter>TodLib\Effect\Effect Include</Filter>
+      <Filter>TodLib\Common\TodCommon Source\Effect\Effect Include</Filter>
     </ClInclude>
     <ClInclude Include="..\Lawn\Widget\GameButton.h">
       <Filter>Lawn\Widget\Widget Include</Filter>
@@ -1483,6 +1522,12 @@
     </ClInclude>
     <ClInclude Include="..\Lawn\Widget\LanguageScreen.h">
       <Filter>Lawn\Widget\Widget Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Lawn\Lua\LuaManager.h">
+      <Filter>Lawn\Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Lawn\Lua\LLawnLib.h">
+      <Filter>Lawn\Lua</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
